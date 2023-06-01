@@ -8,7 +8,7 @@ export default function SubtitleManager() {
     const [subs, setSubs] = useState([new SubtitleEntry(0, 0, 'Hello, world!')]);
 
     function handleAddSubtitle() {
-        const lastTimecode = subs[subs.length - 1].endTimecode;
+        const lastTimecode = subs.length > 0 ? subs[subs.length - 1].endTimecode : 0;
 
         const newSubs = [...subs, new SubtitleEntry(lastTimecode, lastTimecode, 'Hello, world!')];
 
@@ -18,14 +18,39 @@ export default function SubtitleManager() {
         console.log(subs)
     }
 
+    function handleRemoveSubtitle(index: number) {
+        const newSubs = subs.filter((item, i) => i !== index);
+
+        setSubs(newSubs);
+    }
+
+    function handleKeyDown(event: React.KeyboardEvent<HTMLTextAreaElement>) {
+        console.log(event.key);
+        if (event.key === 'Enter') {
+            if (!event.shiftKey) {
+                handleAddSubtitle();
+                event.preventDefault();
+            }
+        }
+        else if (event.key === 'Backspace') {
+            if (event.currentTarget.value === '') {
+                const index = subs.findIndex((item) => item.text === event.currentTarget.value);
+
+                if (index !== -1) {
+                    handleRemoveSubtitle(index);
+                }
+            }
+        }
+    }
+
     return (
         <>
             <div className={styles['subtitles']}>
-                <SubtitlesList/>
+                <SubtitlesList onRemoveSub={handleRemoveSubtitle} subs={subs} onKeyDown={handleKeyDown}/>
                 <button onClick={handleAddSubtitle} className={styles['add-subtitle-button']}>Add</button>
             </div>
 
-            <VideoPlayer id={'videoPlayer'}/>
+            <VideoPlayer id={'videoPlayer'} subtitles={subs}/>
         </>
     )
 }
