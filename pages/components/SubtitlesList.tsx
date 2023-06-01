@@ -16,7 +16,7 @@ export default function SubtitlesList(
             <div className={styles["subtitles-list-wrapper"]}>
                 <ul className={styles['subtitles-list']}>
                     {subs?.map((item, index) => (
-                        <li key={index}>
+                        <li key={item.id}>
                             <SubtitleInput subEntry={item} onKeyDown={onKeyDown}/>
                             <button onClick={() => onRemove(index)}>Remove</button>
                         </li>

@@ -14,15 +14,15 @@ export default function SubtitleManager() {
 
         setSubs(newSubs);
 
-        console.log(lastTimecode);
-        console.log(subs)
+        // console.log(lastTimecode);
+        // console.log(subs)
     }
 
     function handleRemoveSubtitle(index: number) {
-        const newSubs = [...subs];
-        const removed = newSubs.splice(index, 1);
+        const newSubs = subs.filter((item, i) => i !== index);
 
-        console.log(index, removed)
+        // console.log(subs)
+        // console.log(newSubs)
 
         setSubs(newSubs);
     }

@@ -8,6 +8,9 @@ export default class SubtitleEntry {
     */
     public endTimecode: number;
     public text: string;
+    public id: number = SubtitleEntry._IdCounter++;
+
+    private static _IdCounter: number = 0;
 
     constructor(startTime: number, endTime: number, text: string) {
         this.startTimecode = startTime;
