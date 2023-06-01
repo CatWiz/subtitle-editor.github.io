@@ -1,0 +1,183 @@
+.head{
+    width: 100%;
+    height: 150px;
+    background: linear-gradient(to left, #aa0ab9 , #0bc24b);
+    align-items: center;
+    justify-content: center;
+}
+.ava{
+    width: 50px;
+    height: 50px;
+    user-select: none;
+    margin: 50px 50px;
+    transform: scale(1.5);
+}
+.header{
+    display:flex;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    justify-content: center;
+    font-size: 5em;
+    color: white;
+    user-select: none;
+    margin-top: -133px;
+}
+.button-pos{
+    display: flex;
+    float: right;
+    width: 15%;
+    height: 100px;
+    position: relative;
+    user-select: none;
+    background-color: #c90946;
+    margin-top: -95px;
+    margin-right: 50px;
+    border-radius: 10px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+.button-pos:active{
+    background-color: gray;
+    transition: 0.25s;
+}
+.inputfile{
+    user-select: none;
+    margin: 0;
+    overflow: visible;
+    display: none;
+}
+.button-text{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    user-select: none;
+    font-size: 30px;
+    border-radius: 6px;
+    color: #fff;
+    cursor: pointer;
+    padding: 30px 43px 30px;
+}
+.subtitles{
+    display: block;
+    width: 20%;
+    height: 856px;
+    background-color: blue;
+    float: left;
+    overflow-y: scroll;
+}
+.subtitles-block-wrapper {
+    margin-top: 10px;
+    margin-left: 3px;
+    margin-right: 3px;
+}
+.subtitles-list-wrapper {
+    width: 100%;
+}
+.subtitles-list {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.subtitles-list > ul {
+    margin: 0;
+    padding: 0;
+}
+.timecodes{
+    display: flex;
+    flex-direction: row;
+}
+.time-selector{
+    width: 100%;
+}
+.subtitle-text-field {
+    width: 100%;
+    height: fit-content;
+    min-height: 4em;
+    margin-top: 10px;
+}
+.subtitles-text{
+    padding-top: 10px;
+}
+.add-subtitle-button {
+    margin-top: 10px;
+    width: 100%;
+    margin-left: 3px;
+    margin-right: 3px;
+}
+.text-for-video{
+    width: 250px;
+    height: 60px;
+}
+.video{
+    width: 80%;
+    height: 856px;
+    display: flex;
+    user-select: none;
+}
+.player{
+    width: 100%;
+    height: 100px;
+    background-color: yellow;
+    padding: 0;
+    margin: 0;
+}
+.info{
+    width: 100%;
+    margin-top: 1%;
+    margin-bottom: 7%;
+}
+.info-first{
+    width: 30%;
+    height: 100px;
+    float: left;
+    margin-left: 19%;
+    box-shadow:0px 0px 10px 5px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+}
+.description{
+    font-family: Helvetica, Arial, sans-serif;
+    text-align: center;
+    line-height: 20px;
+    font-size: 16px;
+}
+.info-second{
+    display: flex;
+    width: 30%;
+    height: 100px;
+    float: left;
+    margin-left: 2%;
+    box-shadow:0px 0px 10px 5px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    font-size: 21px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+.li{
+    list-style-type: none;
+}
+.gmail{
+    width: 25px;
+    height: 25px;
+    background-repeat: no-repeat;
+    display: inline-block;
+    background-image: url(icons/icons8-gmail-25.png);
+    vertical-align: middle;
+}
+.skype{
+    width: 25px;
+    height: 25px;
+    background-repeat: no-repeat;
+    display: inline-block;
+    background-image: url(icons/icons8-скайп-25.png);
+    vertical-align: middle;
+}
+.discord{
+    width: 25px;
+    height: 25px;
+    background-repeat: no-repeat;
+    display: inline-block;
+    background-image: url(icons/icons8-discord-25.png);
+    vertical-align: middle;
+}
