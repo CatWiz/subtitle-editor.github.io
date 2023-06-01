@@ -19,13 +19,15 @@ export default function SubtitleManager() {
     }
 
     function handleRemoveSubtitle(index: number) {
-        const newSubs = subs.filter((item, i) => i !== index);
+        const newSubs = [...subs];
+        const removed = newSubs.splice(index, 1);
+
+        console.log(index, removed)
 
         setSubs(newSubs);
     }
 
     function handleKeyDown(event: React.KeyboardEvent<HTMLTextAreaElement>) {
-        console.log(event.key);
         if (event.key === 'Enter') {
             if (!event.shiftKey) {
                 handleAddSubtitle();
