@@ -14,18 +14,20 @@ export default function SubtitleManager() {
 
         setSubs(newSubs);
 
-        console.log(lastTimecode);
-        console.log(subs)
+        // console.log(lastTimecode);
+        // console.log(subs)
     }
 
     function handleRemoveSubtitle(index: number) {
         const newSubs = subs.filter((item, i) => i !== index);
 
+        // console.log(subs)
+        // console.log(newSubs)
+
         setSubs(newSubs);
     }
 
     function handleKeyDown(event: React.KeyboardEvent<HTMLTextAreaElement>) {
-        console.log(event.key);
         if (event.key === 'Enter') {
             if (!event.shiftKey) {
                 handleAddSubtitle();
@@ -44,13 +46,15 @@ export default function SubtitleManager() {
     }
 
     return (
-        <>
+        <div className={styles['subtitleEditor']}>
             <div className={styles['subtitles']}>
                 <SubtitlesList onRemoveSub={handleRemoveSubtitle} subs={subs} onKeyDown={handleKeyDown}/>
                 <button onClick={handleAddSubtitle} className={styles['add-subtitle-button']}>Add</button>
             </div>
-
-            <VideoPlayer id={'videoPlayer'} subtitles={subs}/>
-        </>
+            <div className={styles['PlayerTimeLineDiv']}>
+                <VideoPlayer id={'videoPlayer'} subtitles={subs}/>
+                <div className={styles['player']}/>
+            </div>
+        </div>
     )
 }

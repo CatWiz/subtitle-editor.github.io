@@ -35,9 +35,9 @@ export default function HomePage() {
 
         <SubtitleManager/>
 
-        <div className={styles['player']}/>
+        
 
-        <footer className={styles['info']}>
+        {/* <footer className={styles['info']}>
           <div className={styles['info-first']}>
             <span className={styles['description']}>
                 Сайт для створення субтитрів для відео – це онлайн-інструмент,
@@ -61,7 +61,7 @@ export default function HomePage() {
               </li>
             </ul>
           </div>
-        </footer>
+        </footer> */}
       </div>
     </>
   );
