@@ -46,13 +46,15 @@ export default function SubtitleManager() {
     }
 
     return (
-        <>
+        <div className={styles['subtitleEditor']}>
             <div className={styles['subtitles']}>
                 <SubtitlesList onRemoveSub={handleRemoveSubtitle} subs={subs} onKeyDown={handleKeyDown}/>
                 <button onClick={handleAddSubtitle} className={styles['add-subtitle-button']}>Add</button>
             </div>
-
-            <VideoPlayer id={'videoPlayer'} subtitles={subs}/>
-        </>
+            <div className={styles['PlayerTimeLineDiv']}>
+                <VideoPlayer id={'videoPlayer'} subtitles={subs}/>
+                <div className={styles['player']}/>
+            </div>
+        </div>
     )
 }

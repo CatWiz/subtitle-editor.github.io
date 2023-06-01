@@ -1,35 +1,35 @@
 .head{
+    display: flex;
     width: 100%;
-    height: 150px;
+    height: 5%;
     background: linear-gradient(to left, #aa0ab9 , #0bc24b);
     align-items: center;
     justify-content: center;
 }
 .ava{
-    width: 50px;
-    height: 50px;
+    display: flex;
     user-select: none;
-    margin: 50px 50px;
-    transform: scale(1.5);
+    justify-self: left;
+    margin-left: 70px;
 }
 .header{
     display:flex;
+    width: 80%;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     justify-content: center;
-    font-size: 5em;
+    font-size:5em;
     color: white;
     user-select: none;
-    margin-top: -133px;
+    margin-left: 50px;
 }
 .button-pos{
     display: flex;
     float: right;
     width: 15%;
-    height: 100px;
+    height: 3em;
     position: relative;
     user-select: none;
     background-color: #c90946;
-    margin-top: -95px;
     margin-right: 50px;
     border-radius: 10px;
     text-align: center;
@@ -53,12 +53,17 @@
     border-radius: 6px;
     color: #fff;
     cursor: pointer;
-    padding: 30px 43px 30px;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+.subtitleEditor{
+    display: flex;
+    width: 100%;
+    height: 80%;
 }
 .subtitles{
     display: block;
-    width: 20%;
-    height: 856px;
+    width: 27%;
     background-color: blue;
     float: left;
     overflow-y: scroll;
@@ -128,15 +133,22 @@
     height: 60px;
 }
 .video{
-    width: 80%;
-    height: 856px;
     display: flex;
+    width: 100%;
+    height: 30%;
     user-select: none;
+}
+.PlayerTimeLineDiv{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+
 }
 .player{
     width: 100%;
     height: 100px;
-    background-color: yellow;
+    background-color: rgb(128, 60, 60);
     padding: 0;
     margin: 0;
 }
