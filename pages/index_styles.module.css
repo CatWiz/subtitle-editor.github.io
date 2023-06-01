@@ -67,6 +67,8 @@
     background-color: blue;
     float: left;
     overflow-y: scroll;
+    overflow-x: hidden;
+    padding: 5px;
 }
 .subtitles-block-wrapper {
     margin-top: 10px;
@@ -79,7 +81,6 @@
 .subtitles-list {
     width: 100%;
     height: 100%;
-    overflow: hidden;
     list-style: none;
     margin: 0;
     padding: 0;
@@ -118,8 +119,6 @@
     margin-top: 10px;
     width: 100%;
     height: 2em;
-    margin-left: 3px;
-    margin-right: 3px;
 }
 .remove-subtitle-button {
     margin-top: 5px;
