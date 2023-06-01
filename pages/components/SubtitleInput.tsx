@@ -6,9 +6,13 @@ export default function SubtitleInput(
     {
         subEntry,
         onKeyDown,
+        onRemove,
+        index
     }: {
         subEntry: SubtitleEntry
         onKeyDown?: KeyboardEventHandler<HTMLTextAreaElement>
+        onRemove?: (index: number) => void
+        index: number
     }) {
 
     function handleChangeTimecode(event: React.ChangeEvent<HTMLInputElement>) {
@@ -43,6 +47,7 @@ export default function SubtitleInput(
             </div>
             <textarea className={styles["subtitle-text-field"]} placeholder={'Enter your subtitle here'}
                 defaultValue={subEntry.text} onChange={handleChangeText} onKeyDown={onKeyDown}></textarea>
+            <button className={styles['remove-subtitle-button']} onClick={() => onRemove(index)}>Remove</button>
         </div>
     )
 }
