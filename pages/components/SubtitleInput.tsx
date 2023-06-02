@@ -7,12 +7,14 @@ export default function SubtitleInput(
         subEntry,
         onKeyDown,
         onRemove,
-        index
+        index,
+        onFocus
     }: {
         subEntry: SubtitleEntry
         onKeyDown?: KeyboardEventHandler<HTMLTextAreaElement>
         onRemove?: (index: number) => void
-        index: number
+        index: number,
+        onFocus?: (index: number) => void
     }) {
 
     const [startTime, setStartTime] = useState(subEntry.startTimecode);
@@ -43,6 +45,12 @@ export default function SubtitleInput(
         subEntry.text = event.target.value;
     }
 
+    function handleFocus() {
+        if (onFocus !== undefined) {
+            onFocus(index);
+        }
+    }
+
     return (
         <div className={styles["subtitles-block-wrapper"]}>
             <div className={styles["timecodes"]}>
@@ -55,7 +63,7 @@ export default function SubtitleInput(
                     className={styles["time-selector"]} value={endTime}></input>
             </div>
             <textarea className={styles["subtitle-text-field"]} placeholder={'Enter your subtitle here'}
-                defaultValue={subEntry.text} onChange={handleChangeText} onKeyDown={onKeyDown}></textarea>
+                defaultValue={subEntry.text} onChange={handleChangeText} onKeyDown={onKeyDown} onFocus={handleFocus}></textarea>
             <button className={styles['remove-subtitle-button']} onClick={() => onRemove(index)}>Remove</button>
         </div>
     )
