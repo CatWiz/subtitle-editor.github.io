@@ -10,7 +10,7 @@ export default function SubtitleManager() {
     const [currentIndex, setCurrentIndex] = useState(0);
 
     function AddSubtitle(index?: number) {
-        index ??= subs.length - 1;
+        index ??= subs.length;
 
         const lastTimecode = index > 0 ? subs[index - 1].endTimecode : 0;
 
