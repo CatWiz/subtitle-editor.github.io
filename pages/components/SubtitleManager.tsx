@@ -1,8 +1,8 @@
-import SubtitlesList from "./SubtitlesList";
 import styles from '../index_styles.module.css';
 import VideoPlayer from "./VideoPlayer";
 import { useState } from "react";
 import SubtitleEntry from "../Classes/SubtitleEntry";
+import SubtitleInput from "./SubtitleInput";
 
 
 export default function SubtitleManager() {
@@ -49,9 +49,18 @@ export default function SubtitleManager() {
 
     return (
         <div className={styles['subtitleEditor']}>
-            <div className={styles['subtitles']}>
-                <SubtitlesList onRemoveSub={handleRemoveSubtitle} subs={subs}
-                    onKeyDown={handleKeyDown} onFocusInput={handleFocusInput}/>
+            <div className={styles['subtitles-panel']}>
+
+                <div className={styles["subtitles-list-wrapper"]}>
+                    <ul className={styles['subtitles-list']}>
+                        {subs?.map((item, index) => (
+                            <li key={item.id}>
+                                <SubtitleInput index={index} subEntry={item}
+                                    onRemove={handleRemoveSubtitle} onKeyDown={handleKeyDown} onFocus={handleFocusInput}/>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
 
                 <button onClick={handleAddSubtitle} className={styles['add-subtitle-button']}>Add</button>
             </div>
