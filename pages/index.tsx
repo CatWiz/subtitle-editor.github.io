@@ -2,7 +2,6 @@ import styles from './index_styles.module.css';
 import Head from 'next/head';
 import FileUploadButton from './components/FileUploadButton';
 import AppIcon from './icons/play.png';
-import SubtitlesList from './components/SubtitlesList';
 import VideoPlayer from './components/VideoPlayer';
 import SubtitleManager from './components/SubtitleManager';
 
@@ -26,12 +25,6 @@ export default function HomePage() {
           <a className={styles.header}>Subtitles</a>
           <FileUploadButton/>
         </div>
-
-        {/* <div className={styles['subtitles']}>
-          <SubtitlesList/>
-        </div>
-
-        <VideoPlayer id={'videoPlayer'}/> */}
 
         <SubtitleManager/>
 

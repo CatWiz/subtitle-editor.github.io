@@ -18,6 +18,7 @@ export default function SubtitleManager() {
         newSubs.splice(index, 0, new SubtitleEntry(lastTimecode, lastTimecode, 'Hello, world!'));
 
         setSubs(newSubs);
+        setCurrentIndex(index);
     }
 
     function handleAddSubtitle() {
@@ -37,7 +38,6 @@ export default function SubtitleManager() {
         if (event.key === 'Enter') {
             if (!event.shiftKey) {
                 AddSubtitle(currentIndex + 1);
-                setCurrentIndex(currentIndex + 1);
                 event.preventDefault();
             }
         }
