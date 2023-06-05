@@ -70,19 +70,20 @@ export default function SubtitleInput(
 
     return (
         <div className={styles["subtitles-block-wrapper"]}>
-            <div className={styles["timecodes"]}>
-                <input data-isstartinput={true} type={'text'} inputMode='numeric'
-                    onChange={handleChangeTimecode}
-                    className={styles["time-selector"]} value={startTime}></input>
-
-                <input data-isstartinput={false} type={'text'} inputMode='numeric'
-                    onChange={handleChangeTimecode}
-                    className={styles["time-selector"]} value={endTime}></input>
+            <button className={styles['remove-subtitle-button']} onClick={() => onRemove(index)}> 
+            </button>
+            <div className={styles["purple-green"]}>
+                <textarea className={styles["subtitle-text-field"]} placeholder={'Enter your subtitle here'}
+                defaultValue={subEntry.text} onChange={handleChangeText} onKeyDown={onKeyDown} onFocus={handleFocus}></textarea>
+                <div className={styles["timecodes"]}>
+                    <input data-isstartinput={true} type={'text'} inputMode='numeric'
+                        onChange={handleChangeTimecode}
+                        className={styles["time-selector-start"]} value={startTime}></input>
+                    <input data-isstartinput={false} type={'text'} inputMode='numeric'
+                        onChange={handleChangeTimecode}
+                        className={styles["time-selector-end"]} value={endTime}></input>
+                </div>
             </div>
-            <textarea className={styles["subtitle-text-field"]} placeholder={'Enter your subtitle here'}
-                defaultValue={subEntry.text} ref={textRef}
-                onChange={handleChangeText} onKeyDown={onKeyDown} onFocus={handleFocus}></textarea>
-            <button className={styles['remove-subtitle-button']} onClick={() => onRemove(index)}>Remove</button>
         </div>
     )
 }

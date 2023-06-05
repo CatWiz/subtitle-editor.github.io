@@ -65,16 +65,26 @@
 .subtitles-panel{
     display: block;
     width: 27%;
-    background-color: blue;
+    background-color: rgb(82, 82, 94);
     float: left;
     overflow-y: scroll;
     overflow-x: hidden;
     padding: 5px;
 }
 .subtitles-block-wrapper {
-    margin-top: 10px;
     margin-left: 3px;
     margin-right: 3px;
+}
+.remove-subtitle-button {
+    width: 28px;
+    height: 28px;
+    background-repeat: no-repeat;
+    background-image: url(icons/icons8-крестик-25.png);
+    padding: 0;
+    margin: 0;
+    float: right;
+    border-radius: 15px;
+    border: #000000 2px solid;
 }
 .subtitles-list-wrapper {
     width: 100%;
@@ -85,49 +95,58 @@
     list-style: none;
     margin: 0;
     padding: 0;
-}
-.subtitles-list {
-    margin: 0;
     margin-top: 0.5em;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
 }
 .subtitles-list > li {
-    margin-top: -2px;
     border: #000000 2px solid;
     border-radius: 5px;
     padding: 5px;
-    background-color: #ffffff;
+    background-color: #363535;
+}
+.purple-green{
+    display: flex;
 }
 .timecodes{
+    
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    align-items: end;
+    justify-content: center;
 }
-.time-selector{
-    width: 100%;
+.time-selector-start{
+    border: #000000 2px solid;
+    width: 65%;
+    margin-right: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+.time-selector-end{
+    border: #000000 2px solid;
+    width: 65%;
+    margin-right: 10px;
+    border-radius: 5px;
 }
 .subtitle-text-field {
+    border: #000000 2px solid;
+    display: flex;
     width: 100%;
     height: fit-content;
     min-height: 4em;
-    margin-top: 10px;
+    border-radius: 5px;
 }
 .subtitles-text{
     padding-top: 10px;
 }
 .add-subtitle-button {
-    margin-top: 10px;
+    margin-top: 5px;
     width: 100%;
     height: 2em;
+    border-radius: 5px;
+    border: #000000 2px solid;
+    background-color: #363535;
+    color: #fff;
 }
-.remove-subtitle-button {
-    margin-top: 5px;
-    margin-bottom: 10px;
-    width: 100%;
-    margin-left: 3px;
-    margin-right: 3px;
-}
+
 .text-for-video{
     width: 250px;
     height: 60px;
