@@ -3,6 +3,7 @@ import VideoPlayer from "./VideoPlayer";
 import { useState } from "react";
 import SubtitleEntry from "../Classes/SubtitleEntry";
 import SubtitleInput from "./SubtitleInput";
+import ExportButton from './ExportButton';
 
 
 export default function SubtitleManager() {
@@ -56,7 +57,7 @@ export default function SubtitleManager() {
     return (
         <div className={styles['subtitleEditor']}>
             <div className={styles['subtitles-panel']}>
-
+                <ExportButton subs={subs}></ExportButton>
                 <div className={styles["subtitles-list-wrapper"]}>
                     <ul className={styles['subtitles-list']}>
                         {subs?.map((item, index) => (
