@@ -19,15 +19,25 @@ export default class SubtitleEntry {
     }
 
     static ToTimestamp(timecode: number): string {
+        const formatParams = {
+            minimumIntegerDigits: 2,
+            useGrouping: false
+        };
+
         const hours = Math.floor(timecode / 3600);
         const minutes = Math.floor((timecode - hours * 3600) / 60);
         const seconds = Math.floor(timecode - hours * 3600 - minutes * 60);
         const milliseconds = Math.floor((timecode - hours * 3600 - minutes * 60 - seconds) * 1000);
 
-        return `${hours}:${minutes}:${seconds}.${milliseconds}`;
+        const hoursStr = hours.toLocaleString('en-US', formatParams);
+        const minutesStr = minutes.toLocaleString('en-US', formatParams);
+        const secondsStr = seconds.toLocaleString('en-US', formatParams);
+        const millisecondsStr = milliseconds.toLocaleString('en-US', {minimumIntegerDigits: 3, useGrouping: false});
+
+        return `${hoursStr}:${minutesStr}:${secondsStr}.${millisecondsStr}`;
     }
 
     public ToVTT(): string {
-        return `${SubtitleEntry.ToTimestamp(this.startTimecode)} --> ${SubtitleEntry.ToTimestamp(this.endTimecode)}\n${this.text}\n\n`;
+        return `${SubtitleEntry.ToTimestamp(this.startTimecode)} --> ${SubtitleEntry.ToTimestamp(this.endTimecode)}\n${this.text}`;
     }
 }
