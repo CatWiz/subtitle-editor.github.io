@@ -24,24 +24,19 @@ export default function SubtitleInput(
     const [endTime, setEndTime] = useState(subEntry.endTimecode);
 
     function handleChangeTimecode(event: React.ChangeEvent<HTMLInputElement>) {
-        const text = (event.target.value as string).replace(/[^0-9.]/g, '');
+        const valueStr = event.target.value;
 
         if (event.target.dataset.isstartinput === 'true') {
-            if (text !== '') {
-                subEntry.startTimecode = Number(text) ?? Number(event.target.value);
-            }
-            subEntry.endTimecode = Math.max(Number(text), subEntry.endTimecode);
+            subEntry.startTimecode = Number(valueStr) ?? Number(valueStr.slice(0,  valueStr.length - 1)) ?? 0;
+            subEntry.endTimecode = Math.max(Number(valueStr), subEntry.endTimecode);
         }
         else {
-            if (text !== '') {
-                subEntry.endTimecode = Number(text) ?? Number(event.target.value);
-            }
-            subEntry.startTimecode = Math.min(Number(text), subEntry.startTimecode);
+            subEntry.endTimecode = Number(valueStr) ?? Number(valueStr.slice(0,  valueStr.length - 1)) ?? 0;
+            subEntry.startTimecode = Math.min(Number(valueStr), subEntry.startTimecode);
         }
 
         setStartTime(subEntry.startTimecode);
         setEndTime(subEntry.endTimecode);
-        // console.log(subEntry);
     }
 
     function handleChangeText(event: React.ChangeEvent<HTMLTextAreaElement>) {
@@ -51,6 +46,13 @@ export default function SubtitleInput(
     function handleFocus() {
         if (onFocus !== undefined) {
             onFocus(index);
+        }
+    }
+
+    function handleKeyDown(event: React.KeyboardEvent<HTMLInputElement>){
+        console.log(event.key);
+        if (event.key !== 'Tab' && /[^0-9\.]/.test(event.key)){
+            event.preventDefault();
         }
     }
 
@@ -68,19 +70,20 @@ export default function SubtitleInput(
         }
     }, [shouldBeFocused]);
 
+
     return (
         <div className={styles["subtitles-block-wrapper"]}>
-            <button className={styles['remove-subtitle-button']} onClick={() => onRemove(index)}> 
+            <button className={styles['remove-subtitle-button']} onClick={() => onRemove(index)}>
             </button>
             <div className={styles["purple-green"]}>
-                <textarea className={styles["subtitle-text-field"]} placeholder={'Enter your subtitle here'}
+                <textarea className={styles["subtitle-text-field"]} placeholder={'Enter your subtitle here'} ref={textRef}
                 defaultValue={subEntry.text} onChange={handleChangeText} onKeyDown={onKeyDown} onFocus={handleFocus}></textarea>
                 <div className={styles["timecodes"]}>
                     <input data-isstartinput={true} type={'text'} inputMode='numeric'
-                        onChange={handleChangeTimecode}
+                        onChange={handleChangeTimecode} onKeyDown={handleKeyDown}
                         className={styles["time-selector-start"]} value={startTime}></input>
                     <input data-isstartinput={false} type={'text'} inputMode='numeric'
-                        onChange={handleChangeTimecode}
+                        onChange={handleChangeTimecode} onKeyDown={handleKeyDown}
                         className={styles["time-selector-end"]} value={endTime}></input>
                 </div>
             </div>

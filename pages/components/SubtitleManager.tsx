@@ -15,7 +15,7 @@ export default function SubtitleManager() {
         const lastTimecode = index > 0 ? subs[index - 1].endTimecode : 0;
 
         const newSubs = [...subs];
-        newSubs.splice(index, 0, new SubtitleEntry(lastTimecode, lastTimecode, 'Hello, world!'));
+        newSubs.splice(index, 0, new SubtitleEntry(lastTimecode, lastTimecode, ''));
 
         setSubs(newSubs);
         setCurrentIndex(index);
@@ -42,7 +42,7 @@ export default function SubtitleManager() {
             }
         }
         else if (event.key === 'Backspace') {
-            if (event.currentTarget.value === '') {
+            if (event.currentTarget.value === '' && subs.length > 1) {
                 handleRemoveSubtitle(currentIndex);
                 event.preventDefault();
             }
