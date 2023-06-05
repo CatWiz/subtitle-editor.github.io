@@ -20,7 +20,7 @@ export default function ExportButton({subs}: {subs: SubtitleEntry[]}) {
     }
 
     return (
-        <button className={styles['export-button']} onClick={handleExport}>Export</button>
+        <button className={styles['export-button']} onClick={handleExport}>Export as VTT</button>
     )
 
 }

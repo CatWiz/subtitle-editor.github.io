@@ -27,6 +27,9 @@ export default function SubtitleEditor() {
     }
 
     function handleRemoveSubtitle(index: number) {
+        if (subs.length === 1) {
+            return;
+        }
         const newSubs = subs.filter((item, i) => i !== index);
         setSubs(newSubs);
 
@@ -69,11 +72,11 @@ export default function SubtitleEditor() {
                     </ul>
                 </div>
 
-                <button onClick={handleAddSubtitle} className={styles['add-subtitle-button']}>Add</button>
+                <button onClick={handleAddSubtitle} className={styles['add-subtitle-button']}>Add new subtitle</button>
             </div>
-            <div className={styles['PlayerTimeLineDiv']}>
+            <div className={styles['player-and-timeline-wrapper']}>
                 <VideoPlayer id={'videoPlayer'} subtitles={subs}/>
-                <div className={styles['player']}/>
+                <div className={styles['timeline']}/>
             </div>
         </div>
     )

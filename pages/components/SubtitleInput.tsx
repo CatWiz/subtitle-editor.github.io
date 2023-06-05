@@ -75,7 +75,7 @@ export default function SubtitleInput(
             <button className={styles['remove-subtitle-button']} onClick={() => onRemove(index)}>
             </button>
             <div className={styles["purple-green"]}>
-                <textarea className={styles["subtitle-text-field"]} placeholder={'Enter your subtitle here'} ref={textRef}
+                <textarea className={styles["subtitle-text-field"]} placeholder={'Enter subtitle text here'} ref={textRef}
                 defaultValue={subEntry.text} onChange={handleChangeText} onKeyDown={onKeyDown} onFocus={handleFocus}></textarea>
                 <div className={styles["timecodes"]}>
                     <input data-isstartinput={true} type={'text'} inputMode='numeric'
