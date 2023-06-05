@@ -49,7 +49,7 @@
 .button-text{
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     user-select: none;
-    font-size: 30px;
+    font-size: 25px;
     border-radius: 6px;
     color: #fff;
     cursor: pointer;
@@ -140,22 +140,30 @@
 .add-subtitle-button {
     margin-top: 5px;
     width: 100%;
-    height: 2em;
+    height: 3em;
     border-radius: 5px;
     border: #000000 2px solid;
     background-color: #363535;
     color: #fff;
 }
 
+.add-subtitle-button:hover {
+    background-color: #323232;
+}
+
 .export-button {
     margin-top: 5px;
     margin-bottom: 10px;
     width: 100%;
-    height: 2em;
+    height: 4em;
     border-radius: 5px;
     border: #000000 2px solid;
     background-color: #363535;
     color: #fff;
+}
+
+.export-button:hover {
+    background-color: #323232;
 }
 
 .text-for-video{

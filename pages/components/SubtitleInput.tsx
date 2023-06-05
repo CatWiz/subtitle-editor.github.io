@@ -50,7 +50,6 @@ export default function SubtitleInput(
     }
 
     function handleKeyDown(event: React.KeyboardEvent<HTMLInputElement>){
-        console.log(event.key);
         if (event.key !== 'Tab' && event.key !== 'Backspace' && /[^0-9\.]/.test(event.key)){
             event.preventDefault();
         }
