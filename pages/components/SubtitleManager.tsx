@@ -7,7 +7,7 @@ import ExportButton from './ExportButton';
 
 
 export default function SubtitleManager() {
-    const [subs, setSubs] = useState([new SubtitleEntry(0, 0, 'Hello, world!')]);
+    const [subs, setSubs] = useState([new SubtitleEntry(0, 1, 'Hello, world!')]);
     const [currentIndex, setCurrentIndex] = useState(0);
 
     function AddSubtitle(index?: number) {
