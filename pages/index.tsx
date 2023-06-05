@@ -3,7 +3,7 @@ import Head from 'next/head';
 import FileUploadButton from './components/FileUploadButton';
 import AppIcon from './icons/play.png';
 import VideoPlayer from './components/VideoPlayer';
-import SubtitleManager from './components/SubtitleManager';
+import SubtitleEditor from './components/SubtitleEditor';
 
 export default function HomePage() {
   return (
@@ -26,9 +26,9 @@ export default function HomePage() {
           <FileUploadButton/>
         </div>
 
-        <SubtitleManager/>
+        <SubtitleEditor/>
 
-        
+
 
         {/* <footer className={styles['info']}>
           <div className={styles['info-first']}>

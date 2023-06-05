@@ -6,7 +6,7 @@ import SubtitleInput from "./SubtitleInput";
 import ExportButton from './ExportButton';
 
 
-export default function SubtitleManager() {
+export default function SubtitleEditor() {
     const [subs, setSubs] = useState([new SubtitleEntry(0, 1, 'Hello, world!')]);
     const [currentIndex, setCurrentIndex] = useState(0);
 
