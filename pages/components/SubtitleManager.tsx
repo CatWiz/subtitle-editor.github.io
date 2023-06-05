@@ -27,18 +27,24 @@ export default function SubtitleManager() {
     function handleRemoveSubtitle(index: number) {
         const newSubs = subs.filter((item, i) => i !== index);
         setSubs(newSubs);
+
+        if (index === currentIndex) {
+            setCurrentIndex(index - 1);
+        }
     }
 
     function handleKeyDown(event: React.KeyboardEvent<HTMLTextAreaElement>) {
         if (event.key === 'Enter') {
             if (!event.shiftKey) {
                 AddSubtitle(currentIndex + 1);
+                setCurrentIndex(currentIndex + 1);
                 event.preventDefault();
             }
         }
         else if (event.key === 'Backspace') {
             if (event.currentTarget.value === '') {
                 handleRemoveSubtitle(currentIndex);
+                event.preventDefault();
             }
         }
     }
@@ -55,7 +61,7 @@ export default function SubtitleManager() {
                     <ul className={styles['subtitles-list']}>
                         {subs?.map((item, index) => (
                             <li key={item.id}>
-                                <SubtitleInput index={index} subEntry={item}
+                                <SubtitleInput index={index} subEntry={item} shouldBeFocused={index === currentIndex}
                                     onRemove={handleRemoveSubtitle} onKeyDown={handleKeyDown} onFocus={handleFocusInput}/>
                             </li>
                         ))}

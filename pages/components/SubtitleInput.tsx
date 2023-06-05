@@ -1,6 +1,7 @@
 import { KeyboardEventHandler, useState } from 'react';
 import SubtitleEntry from '../Classes/SubtitleEntry';
 import styles from '../index_styles.module.css'
+import React from 'react';
 
 export default function SubtitleInput(
     {
@@ -8,13 +9,15 @@ export default function SubtitleInput(
         onKeyDown,
         onRemove,
         index,
-        onFocus
+        onFocus,
+        shouldBeFocused
     }: {
         subEntry: SubtitleEntry
         onKeyDown?: KeyboardEventHandler<HTMLTextAreaElement>
         onRemove?: (index: number) => void
         index: number,
         onFocus?: (index: number) => void
+        shouldBeFocused?: boolean
     }) {
 
     const [startTime, setStartTime] = useState(subEntry.startTimecode);
@@ -51,6 +54,20 @@ export default function SubtitleInput(
         }
     }
 
+    const textRef = React.createRef<HTMLTextAreaElement>();
+
+    React.useEffect(() => {
+        if (shouldBeFocused) {
+            const textArea = textRef.current as HTMLTextAreaElement;
+            if (textArea === null){
+                return;
+            }
+
+            textArea.focus();
+            textArea.selectionStart = textArea.value.length;
+        }
+    }, [shouldBeFocused]);
+
     return (
         <div className={styles["subtitles-block-wrapper"]}>
             <div className={styles["timecodes"]}>
@@ -63,7 +80,8 @@ export default function SubtitleInput(
                     className={styles["time-selector"]} value={endTime}></input>
             </div>
             <textarea className={styles["subtitle-text-field"]} placeholder={'Enter your subtitle here'}
-                defaultValue={subEntry.text} onChange={handleChangeText} onKeyDown={onKeyDown} onFocus={handleFocus}></textarea>
+                defaultValue={subEntry.text} ref={textRef}
+                onChange={handleChangeText} onKeyDown={onKeyDown} onFocus={handleFocus}></textarea>
             <button className={styles['remove-subtitle-button']} onClick={() => onRemove(index)}>Remove</button>
         </div>
     )
