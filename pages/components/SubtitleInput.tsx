@@ -20,23 +20,26 @@ export default function SubtitleInput(
         shouldBeFocused?: boolean
     }) {
 
-    const [startTime, setStartTime] = useState(subEntry.startTimecode);
-    const [endTime, setEndTime] = useState(subEntry.endTimecode);
+    const [startTime, setStartTime] = useState<string>(String(subEntry.startTimecode));
+    const [endTime, setEndTime] = useState<string>(String(subEntry.endTimecode));
 
     function handleChangeTimecode(event: React.ChangeEvent<HTMLInputElement>) {
         const valueStr = event.target.value;
 
         if (event.target.dataset.isstartinput === 'true') {
             subEntry.startTimecode = Number(valueStr) ?? Number(valueStr.slice(0,  valueStr.length - 1)) ?? 0;
-            subEntry.endTimecode = Math.max(Number(valueStr), subEntry.endTimecode);
+            subEntry.endTimecode = Math.max(Number(valueStr), subEntry.endTimecode); 
+            setStartTime(valueStr);
+            setEndTime(subEntry.endTimecode.toString());
         }
         else {
             subEntry.endTimecode = Number(valueStr) ?? Number(valueStr.slice(0,  valueStr.length - 1)) ?? 0;
             subEntry.startTimecode = Math.min(Number(valueStr), subEntry.startTimecode);
+            setStartTime(subEntry.startTimecode.toString());
+            setEndTime(valueStr);
         }
 
-        setStartTime(subEntry.startTimecode);
-        setEndTime(subEntry.endTimecode);
+
     }
 
     function handleChangeText(event: React.ChangeEvent<HTMLTextAreaElement>) {

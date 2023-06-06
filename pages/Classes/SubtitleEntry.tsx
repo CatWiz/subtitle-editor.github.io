@@ -38,6 +38,6 @@ export default class SubtitleEntry {
     }
 
     public ToVTT(): string {
-        return `${SubtitleEntry.ToTimestamp(this.startTimecode)} --> ${SubtitleEntry.ToTimestamp(this.endTimecode)}\n${this.text}`;
+        return `${SubtitleEntry.ToTimestamp(Number(this.startTimecode) ? Number(this.startTimecode):0)} --> ${SubtitleEntry.ToTimestamp(Number(this.endTimecode)? Number(this.endTimecode):0)}\n${this.text}`;
     }
 }
