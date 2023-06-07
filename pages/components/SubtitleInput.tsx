@@ -38,8 +38,6 @@ export default function SubtitleInput(
             setStartTime(subEntry.startTimecode.toString());
             setEndTime(valueStr);
         }
-
-
     }
 
     function handleChangeText(event: React.ChangeEvent<HTMLTextAreaElement>) {
