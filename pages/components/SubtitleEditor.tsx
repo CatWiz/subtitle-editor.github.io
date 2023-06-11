@@ -39,6 +39,8 @@ export default function SubtitleEditor() {
     }
 
     function handleKeyDown(event: React.KeyboardEvent<HTMLTextAreaElement>) {
+        const textArea = event.currentTarget as HTMLTextAreaElement;
+
         if (event.key === 'Enter') {
             if (!event.shiftKey) {
                 AddSubtitle(currentIndex + 1);
@@ -49,6 +51,18 @@ export default function SubtitleEditor() {
             if (event.currentTarget.value === '' && subs.length > 1) {
                 handleRemoveSubtitle(currentIndex);
                 event.preventDefault();
+            }
+        }
+        else if (event.key === 'ArrowUp' && currentIndex > 0) {
+            if (event.ctrlKey
+             || textArea.selectionStart === 0 && textArea.selectionEnd === 0) {
+                setCurrentIndex(currentIndex - 1);
+            }
+        }
+        else if (event.key === 'ArrowDown' && currentIndex < subs.length - 1) {
+            if (event.ctrlKey
+             || textArea.selectionStart === textArea.value.length && textArea.selectionEnd === textArea.value.length) {
+                setCurrentIndex(currentIndex + 1);
             }
         }
     }
