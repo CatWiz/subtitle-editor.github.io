@@ -48,7 +48,7 @@ export default function SubtitleEditor() {
             }
         }
         else if (event.key === 'Backspace') {
-            if (event.currentTarget.value === '' && subs.length > 1) {
+            if (event.shiftKey || event.currentTarget.value === '' && subs.length > 1) {
                 handleRemoveSubtitle(currentIndex);
                 event.preventDefault();
             }
@@ -63,6 +63,17 @@ export default function SubtitleEditor() {
             if (event.ctrlKey
              || textArea.selectionStart === textArea.value.length && textArea.selectionEnd === textArea.value.length) {
                 setCurrentIndex(currentIndex + 1);
+            }
+        }
+        else if (event.key === ' ') {
+            if (event.ctrlKey) {
+                const videoPlayer = document.getElementById('videoPlayer') as HTMLVideoElement;
+                if (videoPlayer.paused) {
+                    videoPlayer.play();
+                }
+                else {
+                    videoPlayer.pause();
+                }
             }
         }
     }
