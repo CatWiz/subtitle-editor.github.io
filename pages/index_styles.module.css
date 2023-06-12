@@ -96,7 +96,7 @@
     margin: 0;
     padding: 0;
     margin-bottom: 0.5em;
-    margin-top: 1em;
+    margin-top: 5px;
 }
 .subtitles-list > li {
     border: #000000 2px solid;
@@ -175,6 +175,7 @@
     border: #000000 2px solid;
     background-color: #363535;
     color: #fff;
+    position: relative;
 }
 .button-icon{
     float: right;
@@ -191,10 +192,13 @@
   }
 .dropdown-content {
     display: none;
-    position: absolute;
-    width: 20vw;
-    background-color: #000000;
+    /* position: absolute; */
+    width: 19.35vw;
+    background-color: rgba(0, 0, 0, 0.75);
     border-radius: 5px;
+    padding: 5px;
+    padding-top: 15px;
+    margin-top: -10px;
 }
 .dropdown-content > button {
     background-color: #363535;
@@ -204,13 +208,10 @@
     color: #fff;
     min-height: 40px;
     width: inherit;
-    margin-top: 5px;
-}
-.dropdown-content > button:last-child {
     margin-bottom: 5px;
 }
-.dropdown-content > button:first-child {
-    margin-top: 5px;
+.dropdown-content > button:last-child {
+    margin-bottom: 0;
 }
 .dropdown-content > button:hover {
     background-color: #323232;
