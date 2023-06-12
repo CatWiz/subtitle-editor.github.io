@@ -176,6 +176,9 @@
     background-color: #363535;
     color: #fff;
     position: relative;
+    text-align: center;
+    padding-left: 7px;
+    padding-right: 7px;
 }
 .button-icon{
     float: right;
@@ -192,7 +195,6 @@
   }
 .dropdown-content {
     display: none;
-    /* position: absolute; */
     width: 19.35vw;
     background-color: rgba(0, 0, 0, 0.75);
     border-radius: 5px;
