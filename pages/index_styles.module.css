@@ -9,15 +9,17 @@
 .ava{
     display: flex;
     user-select: none;
-    justify-self: left;
     margin-left: 70px;
+    width: 70px;
+    height: 70px;
+    background-repeat: no-repeat;
 }
 .header{
     display:flex;
     width: 80%;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     justify-content: center;
-    font-size:5em;
+    font-size: 3em;
     color: white;
     user-select: none;
     margin-left: 50px;
@@ -49,7 +51,7 @@
 .button-text{
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     user-select: none;
-    font-size: 25px;
+    font-size: 19px;
     border-radius: 6px;
     color: #fff;
     cursor: pointer;
