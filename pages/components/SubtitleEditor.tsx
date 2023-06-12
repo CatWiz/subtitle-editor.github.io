@@ -88,10 +88,7 @@ export default function SubtitleEditor() {
 
                 <button onClick={handleAddSubtitle} className={styles['add-subtitle-button']}>Add new subtitle</button>
             </div>
-            <div className={styles['player-and-timeline-wrapper']}>
-                <VideoPlayer id={'videoPlayer'} subtitles={subs}/>
-                <div className={styles['timeline']}/>
-            </div>
+            <VideoPlayer id={'videoPlayer'} subtitles={subs}/>
         </div>
     )
 }
