@@ -18,16 +18,22 @@ export default class SubtitleEntry {
         this.text = text;
     }
 
-    static ToTimestamp(timecode: number): string {
+    private splitTimecode(timecode: number): number[] {
+        const hours = Math.floor(timecode / 3600);
+        const minutes = Math.floor((timecode - hours * 3600) / 60);
+        const seconds = Math.floor(timecode - hours * 3600 - minutes * 60);
+        const milliseconds = Math.floor((timecode - hours * 3600 - minutes * 60 - seconds) * 1000);
+
+        return [hours, minutes, seconds, milliseconds];
+    }
+
+    static ToVTTTimestamp(timecode: number): string {
         const formatParams = {
             minimumIntegerDigits: 2,
             useGrouping: false
         };
 
-        const hours = Math.floor(timecode / 3600);
-        const minutes = Math.floor((timecode - hours * 3600) / 60);
-        const seconds = Math.floor(timecode - hours * 3600 - minutes * 60);
-        const milliseconds = Math.floor((timecode - hours * 3600 - minutes * 60 - seconds) * 1000);
+        const [hours, minutes, seconds, milliseconds] = this.prototype.splitTimecode(timecode);
 
         const hoursStr = hours.toLocaleString('en-US', formatParams);
         const minutesStr = minutes.toLocaleString('en-US', formatParams);
@@ -37,7 +43,29 @@ export default class SubtitleEntry {
         return `${hoursStr}:${minutesStr}:${secondsStr}.${millisecondsStr}`;
     }
 
-    public ToVTT(): string {
-        return `${SubtitleEntry.ToTimestamp(Number(this.startTimecode) ? Number(this.startTimecode):0)} --> ${SubtitleEntry.ToTimestamp(Number(this.endTimecode)? Number(this.endTimecode):0)}\n${this.text}`;
+    static ToSRTTimestamp(timecode: number): string {
+        const formatParams = {
+            minimumIntegerDigits: 2,
+            useGrouping: false
+        };
+
+        const [hours, minutes, seconds, milliseconds] = this.prototype.splitTimecode(timecode);
+
+        const hoursStr = hours.toLocaleString('en-US', formatParams);
+        const minutesStr = minutes.toLocaleString('en-US', formatParams);
+        const secondsStr = seconds.toLocaleString('en-US', formatParams);
+        const millisecondsStr = milliseconds.toLocaleString('en-US', {minimumIntegerDigits: 3, useGrouping: false});
+
+        return `${hoursStr}:${minutesStr}:${secondsStr},${millisecondsStr}`;
     }
+
+    public ToVTT(): string {
+        return `${SubtitleEntry.ToVTTTimestamp(this.startTimecode)} --> ${SubtitleEntry.ToVTTTimestamp(this.endTimecode)}\n${this.text}`;
+    }
+
+    public ToSRT(index: number): string {
+        return `${index}\n${SubtitleEntry.ToSRTTimestamp(this.startTimecode)} --> ${SubtitleEntry.ToSRTTimestamp(this.endTimecode)}\n${this.text}`;
+    }
+
+
 }
